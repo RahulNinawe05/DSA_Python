@@ -1,2 +1,13 @@
 .git
 .venv
+Untitled 1.odt
+tempCodeRunnerFile.py
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+__pycache__/
+*.pyc
+bool
+.vscode/
+
+.DS_Store
+Thumbs.db
