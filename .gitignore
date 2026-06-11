@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 bool
 .vscode/
+.~lock.Untitled 1.odt#
 
 .DS_Store
 Thumbs.db
