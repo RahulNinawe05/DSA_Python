@@ -54,14 +54,37 @@ def search_Optimal(arr, target):
     return -1
 
 
-arr = [10,12,14,16,18,20,8,7]
+arr = [10,12,14,16,18,20,8,9]
 target = 12
 print(search_Brute(arr, target))
 print(search_Optimal(arr,target))
 
 
 # dry run 
-# arr = [4, 5, 6, 7, 0, 1, 2]
-# index   0  1  2  3  4  5  6
+# arr = [10, 12, 14, 16, 18, 20, 8, 7]
+# index   0   1   2   3   4   5  6  7
 # target = 12
 
+# Iteration 1
+# low=0, high=7
+# mid = (0+7)//2 = 3
+# arr[mid] = arr[3] = 16
+
+# arr[mid] == target?  16 == 12 → NO
+
+# arr[low] <= arr[mid]?
+# arr[0]=10 <= arr[3]=16 → YES ✅ → LEFT is sorted
+
+# arr[low] <= target <= arr[mid]?
+# 10 <= 12 <= 16 → YES ✅  (target inside left range)
+
+# → high = mid - 1 = 2
+
+# Iteration 2
+# low=0, high=2
+# mid = (0+2)//2 = 1
+# arr[mid] = arr[1] = 12
+
+# arr[mid] == target?  12 == 12 → YES ✅
+
+# → return 1
