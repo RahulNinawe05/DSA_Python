@@ -35,6 +35,8 @@ Explanation: Your function should return k = 5, with the first five elements of 
 It does not matter what you leave beyond the returned k (hence they are underscores).
  
 """
+# list me same element mile usee ignore karo agar different mile to i ke sath replace karo (not smap)
+
 nums = [0,1,1,1,2,2,3,3,4,32,64,5]
 
 def removeDuplicates(nums):
@@ -45,7 +47,7 @@ def removeDuplicates(nums):
             nums[i] = nums[j]
 
     return i + 1
-removeDuplicates(nums)
+print(removeDuplicates(nums))
 
 """
 In This Question I have to imagine point {i} in 0 index & Point {j} in 1 index 
@@ -54,3 +56,4 @@ if {i} != {j}  => firstly, increase the {i} by 1 after this the Value of {j} it 
 else, means {i} == {j} => just Increase the {i}
 & return the i + 1 (why becouse i want a Int value {indexing} indexing start from 0 that's why)
 """
+

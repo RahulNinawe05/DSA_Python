@@ -45,6 +45,9 @@ This works because after the first loop, the first j positions contain all non-z
 some of them might be "duplicated" (overwritten copies still sitting from earlier), 
 so the second loop cleans up the tail by zeroing it out.
 """
+
+# Kaam ki cheez aage, junk peeche
+
 def moveZeroes_Optimal(nums):
     j = 0
     for i in range(0,len(nums)):

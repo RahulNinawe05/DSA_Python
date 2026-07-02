@@ -168,6 +168,9 @@ WHY SKIP DUPLICATES? (Important!)
 - Same logic applied to j and k after finding a match
 
 """
+
+# Ek ko fix karo, baaki do ko adjust karo. 
+
 def threeSum_Optimal(nums):
     result = []
     n = len(nums)
