@@ -35,3 +35,22 @@ Input: dist = [1,3,2], hour = 1.9
 Output: -1
 Explanation: It is impossible because the earliest the third train can depart is at the 2 hour mark.
 """
+dist = [1,3,2]
+hour = 6
+
+def minSpeedOnTime(dist, hour):
+
+    for i in range(1,dist):
+        s = 0
+
+        for d in dist:
+            s += (d + i - 1)// i
+
+        if s <= hour:
+            return i
+
+        else:
+            return -1
+
+
+print(minSpeedOnTime(dist,hour))
