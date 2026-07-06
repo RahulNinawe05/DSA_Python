@@ -68,6 +68,7 @@ def get_time(speed):
 # else:(mid >= hour) => (left = mid + 1)
 # if you reduse the (right = mid - 1) they will Loop infinitely / never narrow down correctly, because left and right would keep moving in a direction that never satisfies left > right properly relative to where the real answer is.
 
+# TC:- O(n log n) | SC:- O(n)
 def minSpeedOnTime(dist, hour):
 
     if hour < len(dist) - 1:
