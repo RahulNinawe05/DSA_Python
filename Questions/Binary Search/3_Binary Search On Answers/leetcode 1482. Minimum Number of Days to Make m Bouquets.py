@@ -29,41 +29,101 @@ After day 12: [x, x, x, x, x, x, x]
 It is obvious that we can make two bouquets in different ways.
 
 """
+def minDays_Brute_Force_Solution(bloomDay,m,k):
+    min_value = min(bloomDay)
+    max_value = max(bloomDay)
 
+    answer = -1
 
-bloomDay = [7, 7, 7, 7, 13, 11, 12, 7]
-m = 2
-k = 3
+    for day in range(min_value, max_value+1):
 
-min_value = min(bloomDay)
-max_value = max(bloomDay)
+        cout = 0
+        bouquet = 0
+        for i in range(0, len(bloomDay)):
 
-answer = -1
+            # flower are bloom 
+            if bloomDay[i] <= day:
+                cout += 1
 
-for day in range(min_value, max_value+1):
+                # find out k adjacent flowers
+                if cout == k:
+                    bouquet += 1
+                    cout = 0
 
-    cout = 0
-    bouquet = 0
-    for i in range(0, len(bloomDay)):
-
-        # flower are bloom 
-        if bloomDay[i] <= day:
-            cout += 1
-
-            # find out k adjacent flowers
-            if cout == k:
-                bouquet += 1
+            # flower are not bloom,the adjacency break
+            else:
                 cout = 0
 
-        # flower are not bloom,the adjacency break
+        # required bouquets are found
+        if bouquet >= m:
+            answer = day
+            return answer
+
+# How to solve:- 
+
+# 1. Define the answer range.
+# (Minimum possible day -> Maximum possible day)
+# ex. (1 -----------> 10)
+
+# 2. Apply Binary Search on days.
+
+# 3. Assume 'mid' is the answer.
+# (Can we make m bouquets by day = mid?)
+
+# 4. Count how many bouquets can be made by day = mid.
+# (Use only adjacent bloomed flowers)
+
+# 5. If bouquets >= m,
+#    this day is possible.
+#    Save the answer and try a smaller day.
+
+# 6. Otherwise,
+#    this day is not possible.
+#    Try a larger day.
+
+# 7. Return the minimum possible day.
+
+def minDays_Optimal_Solution(bloomDay,m,k):
+
+    left = min(bloomDay)
+    right = max(bloomDay) 
+
+    answer = -1
+
+    if m * k > len(bloomDay):
+        return -1
+
+    while left <= right:
+
+        count = 0
+        bouquet = 0
+
+        mid = (left + right) // 2
+
+        for i in range(0,len(bloomDay)):
+            if bloomDay[i] <= mid:
+                count += 1
+
+                if count == k:
+                    bouquet += 1
+                    count = 0
+
+            else:
+                count =  0
+
+        if bouquet >= m:
+            answer = mid
+            right = mid - 1
+
         else:
-            cout = 0
+            left = mid + 1
 
-    # required bouquets are found
-    if bouquet >= m:
-        answer = day
-        break
+    return answer
 
-print(answer)
+bloomDay = [7,3,5,9,6,4,8,2,10,1]
 
+m = 3
+k = 2
 
+print(minDays_Brute_Force_Solution(bloomDay,m,k))
+print(minDays_Optimal_Solution(bloomDay,m,k))
