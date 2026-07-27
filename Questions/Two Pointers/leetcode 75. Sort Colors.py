@@ -45,3 +45,29 @@ def sortColors_Brute_Force(nums):
 nums = [2,0,2,1,1,0,1,2,0]
 
 print(sortColors_Brute_Force(nums))
+
+
+def optimal_solution(arr):
+    
+    left = 0
+    mid = 0
+    right = len(arr) - 1
+
+    while mid <= right:
+
+        if arr[mid] == 0:
+            arr[left],arr[mid] = arr[mid], arr[left]
+            left += 1
+            mid += 1
+
+        elif arr[mid] == 1:
+            mid += 1
+
+        elif arr[mid] == 2:
+            arr[mid], arr[right] = arr[right],arr[mid]
+            right -= 1
+
+    return arr
+
+arr = [2,0,2,1,1,0,0,2]
+print(optimal_solution(arr))
