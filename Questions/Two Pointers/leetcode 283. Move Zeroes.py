@@ -15,49 +15,59 @@ Output: [0]
 
 # Brutforce Solution
 # TC: O(n) | SC: O(n)
+#  SPACE NEED
 
 def moveZeroes_BruteForce(nums):
-    zero_store = []
-    number_store = []
-    for i in range(0,len(nums)):
-            if nums[i] <= 0:
-                 zero_store.append(nums[i])
-            else:
-                  number_store.append(nums[i])
-    return number_store + zero_store # store the both Of addition so sc - O(n)
+     temp = []
+
+     for num in nums:
+          if num != 0:
+               temp.append(num)
+
+     for i in range(len(temp)):
+          nums[i] = temp[i]
+
+     for j in range(len(temp), len(nums)):
+          nums[j] = 0
+
+     return nums
+
+
+# Better Solution 
+# TC: O(n) | SC: O(1)
+
+def moveZeroes_Better(nums):
+     j = 0
+
+     for i in range(len(nums)):
+          if nums[i] != 0:
+               nums[j] = nums[i]
+               j += 1
+
+     while j < len(nums):
+          nums[j] = 0
+          j += 1
+
+     return nums
 
 
 # Optimal Solution 
 #TC: O(n) | SC: O(1)
 
-"""
-Approach (Two-Pass / Overwrite Technique)
-This is a slightly different two-pointer style than the swap version. 
-Instead of swapping, it works in two passes:
-
-First pass: Walk through the array and copy every non-zero element to the front, 
-compacting them together (overwriting as you go). j tracks how many non-zero elements have been placed.
-
-Second pass: Once all non-zero elements are compacted at the front (positions 0 to j-1), 
-fill everything from j to the end with 0s.
-
-This works because after the first loop, the first j positions contain all non-zero values in order — but 
-some of them might be "duplicated" (overwritten copies still sitting from earlier), 
-so the second loop cleans up the tail by zeroing it out.
-"""
-
-# Kaam ki cheez aage, junk peeche
-
 def moveZeroes_Optimal(nums):
     j = 0
+
     for i in range(0,len(nums)):
          if nums[i] != 0:
               nums[j] = nums[i]
               j += 1
+
     for k in range(j,len(nums)):
          nums[k] = 0
+         
     return nums
 
 nums = [2,0,3,0,1,5,0]
 print(moveZeroes_BruteForce(nums))
+print(moveZeroes_Better(nums))
 print(moveZeroes_Optimal(nums))
