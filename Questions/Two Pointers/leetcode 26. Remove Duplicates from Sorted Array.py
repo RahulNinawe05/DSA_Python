@@ -40,6 +40,9 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 nums = [0,1,1,1,2,2,3,3,4,32,64,5]
 
 def removeDuplicates(nums):
+    if not nums:
+        return 0
+    
     i = 0
     for j in range(1,len(nums)):
         if nums[i] != nums[j]:
@@ -57,3 +60,18 @@ else, means {i} == {j} => just Increase the {i}
 & return the i + 1 (why becouse i want a Int value {indexing} indexing start from 0 that's why)
 """
 
+nums= [2]
+
+def rem(nums):
+    if not nums:
+        return 0
+    
+    k = 1
+
+    for i in range(1, len(nums)):
+        if nums[i] != nums[k-1]:
+            nums[k] = nums[i]
+            k += 1
+    return k
+
+print(rem(nums))
